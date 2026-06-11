@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邵瑞麟 Steven Shao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --bg2: #141414;
+    --bg3: #1A1A1A;
+    --text: #F0EDE8;
+    --text-muted: #8A8580;
+    --gold: #C9A96E;
+    --gold-light: #DFC28F;
+    --blue: #8599B0;
+    --border: rgba(240,237,232,0.08);
+    --border-gold: rgba(201,169,110,0.3);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s ease;
+  }
+  nav.scrolled { padding: 14px 48px; }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* Language switcher */
+  .lang-switcher {
+    display: flex; gap: 2px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px;
+  }
+  .lang-btn {
+    background: none; border: none;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--bg);
+  }
+  .lang-btn:hover:not(.active) { color: var(--text); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 64px 80px 48px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .hero-name-zh {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 8vw, 120px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .hero-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 380px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold);
+    color: var(--bg);
+    padding: 12px 28px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.25s;
+    font-family: inherit;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    padding: 12px 28px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover { background: rgba(201,169,110,0.08); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-photo-container {
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+
+  .hero-photo {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) contrast(1.05);
+    display: block;
+  }
+
+  .hero-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 30%),
+                linear-gradient(to top, var(--bg) 0%, transparent 25%);
+  }
+
+  .hero-ghost-text {
+    position: absolute;
+    bottom: -20px; right: -10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(100px, 14vw, 200px);
+    font-weight: 600;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.12);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  .hero-stats {
+    position: absolute; bottom: 80px; right: 48px; z-index: 3;
+    display: flex; flex-direction: column; gap: 24px; align-items: flex-end;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .scroll-indicator {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    animation: float 2s ease-in-out infinite;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 48px; }
+  section:nth-child(even) { background: var(--bg2); }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 20px;
+    margin-bottom: 64px;
+  }
+  .section-tag {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); white-space: nowrap;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .section-line {
+    flex: 1; height: 1px; background: var(--border); min-width: 40px;
+  }
+
+  /* ─── ABOUT ─── */
+  #about .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .about-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .about-body {
+    color: var(--text-muted);
+    line-height: 1.9;
+    font-size: 14px;
+  }
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .skill-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .skill-card:hover { border-color: var(--border-gold); background: rgba(201,169,110,0.03); }
+  .skill-card-icon { font-size: 20px; margin-bottom: 12px; }
+  .skill-card-title { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .skill-card-body { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ─── EXPERIENCE ─── */
+  #experience .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute; left: 200px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-meta { padding-right: 40px; }
+  .exp-period { font-size: 12px; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 6px; }
+  .exp-company { font-size: 13px; color: var(--text-muted); }
+  .exp-content { padding-left: 40px; }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--text); margin-bottom: 16px; line-height: 1.2;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li {
+    font-size: 13px; color: var(--text-muted); padding-left: 16px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold);
+  }
+  .exp-tag {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); border: 1px solid rgba(133,153,176,0.3);
+    padding: 3px 8px; margin-top: 12px; margin-right: 6px;
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border);
+  }
+  .project-card {
+    background: var(--bg2);
+    padding: 40px 32px;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover::after { transform: scaleX(1); }
+  .project-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: rgba(201,169,110,0.15); line-height: 1; margin-bottom: 16px; }
+  .project-title { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 12px; line-height: 1.4; }
+  .project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .ptag { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border-gold); padding: 2px 8px; }
+
+  /* ─── EDUCATION ─── */
+  #education .edu-card {
+    border: 1px solid var(--border);
+    padding: 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    max-width: 1000px;
+  }
+  .edu-school {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300;
+    color: var(--text); margin-bottom: 8px; line-height: 1.2;
+  }
+  .edu-degree { color: var(--gold); font-size: 13px; margin-bottom: 4px; }
+  .edu-period { color: var(--text-muted); font-size: 12px; }
+  .edu-courses { margin-top: 32px; }
+  .edu-courses-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+  .course-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .course-pill { background: var(--bg3); border: 1px solid var(--border); font-size: 12px; color: var(--text-muted); padding: 5px 12px; }
+  .edu-awards { margin-top: 32px; }
+  .award-item {
+    display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border);
+  }
+  .award-icon { color: var(--gold); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .award-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .award-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--bg); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .contact-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300; line-height: 1.1; color: var(--text);
+  }
+  .contact-lead em { font-style: italic; color: var(--gold); }
+  .contact-sub { margin-top: 24px; font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+  .contact-list { display: flex; flex-direction: column; gap: 24px; margin-top: 48px; }
+  .contact-item { display: flex; gap: 20px; align-items: flex-start; }
+  .contact-item-icon { color: var(--gold); font-size: 16px; margin-top: 3px; flex-shrink: 0; }
+  .contact-item-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .contact-item-value { font-size: 14px; color: var(--text); }
+  .contact-item-value a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .contact-item-value a:hover { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-muted); font-size: 12px;
+  }
+
+  /* ─── MOBILE ─── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1px; background: var(--text); margin: 5px 0; transition: all 0.3s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0; top: 60px;
+      background: var(--bg2);
+      align-items: center; justify-content: center;
+      gap: 40px; z-index: 99;
+    }
+    .nav-links.open a { font-size: 18px; color: var(--text); }
+    .hamburger { display: block; }
+
+    #hero { grid-template-columns: 1fr; min-height: 100svh; }
+    .hero-left { padding: 120px 24px 60px; justify-content: flex-end; }
+    .hero-right { display: none; }
+    .hero-ghost-text { display: none; }
+    .hero-stats { display: none; }
+
+    section { padding: 72px 24px; }
+
+    #about .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .skills-grid { grid-template-columns: 1fr; }
+
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .exp-item::before { display: none; }
+    .exp-meta { padding: 0; }
+    .exp-content { padding: 0; margin-top: 4px; }
+
+    #projects .projects-grid { grid-template-columns: 1fr; }
+
+    #education .edu-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
+
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+
+    .section-header { flex-wrap: wrap; gap: 12px; }
+    .section-line { display: none; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    @keyframes float { from, to { transform: translateX(-50%); } }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">邵<span>·</span>Steven</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about" data-i18n="nav.about">关于我</a></li>
+    <li><a href="#experience" data-i18n="nav.exp">经历</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">项目</a></li>
+    <li><a href="#education" data-i18n="nav.edu">教育</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
+  </ul>
+  <div style="display:flex;gap:16px;align-items:center;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('zh')">中</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">数字咨询 · 翻译管理 · 内容创作</p>
+    <h1 class="hero-name-zh">邵瑞麟</h1>
+    <p class="hero-name-en">Steven Shao</p>
+    <p class="hero-desc" data-i18n="hero.desc">北京信息科技大学翻译与管理双修在读生。具备德勤数字咨询、AI产品、市场营销实习经历，融汇多语言能力与数据分析思维，致力于数字咨询领域。</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary" data-i18n="hero.cta1">查看经历</a>
+      <a href="#contact" class="btn-ghost" data-i18n="hero.cta2">联系我</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-container">
+      <img src="PIC_1_X5 (2).png" alt="邵瑞麟 Steven" class="hero-photo" onerror="this.style.display='none'">
+      <div class="hero-photo-overlay"></div>
+    </div>
+    <div class="hero-ghost-text">邵</div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">105</div>
+        <div class="stat-label">TOEFL</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label" data-i18n="hero.stat2">实习经历</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label" data-i18n="hero.stat3">语言能力</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span data-i18n="hero.scroll">SCROLL</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-tag">01</span>
+    <h2 class="section-title" data-i18n="about.title">关于我</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="about-lead reveal" data-i18n="about.lead">翻译+管理复合背景，多语言能力与数字思维的交汇点。</p>
+      <p class="about-body reveal reveal-delay-1" data-i18n="about.body">21岁，就读于北京信息科技大学，主修翻译，辅修管理。托福105分，具备流利商务英语和西班牙语基础交流能力。在德勤数字咨询、AI创业公司和知名消费品牌积累了丰富实习经历，擅长数据分析、项目协调与跨文化沟通，致力于在数字咨询领域持续深耕。</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🌐</div>
+        <div class="skill-card-title" data-i18n="skill1.title">语言能力</div>
+        <div class="skill-card-body" data-i18n="skill1.body">中文（母语）· 英语（托福105）· 西班牙语（基础交流）</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon">📊</div>
+        <div class="skill-card-title" data-i18n="skill2.title">数据分析</div>
+        <div class="skill-card-body" data-i18n="skill2.body">Python · MySQL · Excel · 商业数据可视化</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon">💡</div>
+        <div class="skill-card-title" data-i18n="skill3.title">数字咨询</div>
+        <div class="skill-card-body" data-i18n="skill3.body">业务流程梳理 · 数字化转型 · 方案撰写</div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-icon">🎬</div>
+        <div class="skill-card-title" data-i18n="skill4.title">内容创作</div>
+        <div class="skill-card-body" data-i18n="skill4.body">剪映 · PR · 小红书运营 · SEO优化</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-tag">02</span>
+    <h2 class="section-title" data-i18n="exp.title">实习经历</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2026.06 — 2026.08</div>
+        <div class="exp-company">德勤（北京）<br>Deloitte Beijing</div>
+      </div>
+      <div class="exp-content">
+        <h3 class="exp-role" data-i18n="exp1.role">Digital Consulting 实习生</h3>
+        <ul class="exp-bullets">
+          <li data-i18n="exp1.b1">参与企业数字化转型咨询，梳理业务流程，调研行业方案并输出简报</li>
+          <li data-i18n="exp1.b2">使用Excel、Python处理业务数据，完成清洗、统计与可视化分析</li>
+          <li data-i18n="exp1.b3">协助搭建解决方案框架，编写中英文咨询文档与演示文稿</li>
+          <li data-i18n="exp1.b4">对接客户与内部团队，同步进度，跟进方案迭代落地</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Digital Consulting</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Data Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2025.11 — 2026.03</div>
+        <div class="exp-company">Cookiy AI</div>
+      </div>
+      <div class="exp-content">
+        <h3 class="exp-role" data-i18n="exp2.role">创意内容实习生</h3>
+        <ul class="exp-bullets">
+          <li data-i18n="exp2.b1">负责海外社媒账号运营与内容创作，提升曝光与互动</li>
+          <li data-i18n="exp2.b2">开展官网SEO优化，布局关键词，提升自然搜索流量</li>
+          <li data-i18n="exp2.b3">参与AI产品功能测试，记录并反馈问题，优化使用体验</li>
+          <li data-i18n="exp2.b4">协助产品岗位，梳理需求，对接技术与运营团队</li>
+        </ul>
+        <div>
+          <span class="exp-tag">SEO</span>
+          <span class="exp-tag">Social Media</span>
+          <span class="exp-tag">AI Product</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2024.06 — 2024.09</div>
+        <div class="exp-company">北京长峰金鼎科技<br>Changfeng Jinding</div>
+      </div>
+      <div class="exp-content">
+        <h3 class="exp-role" data-i18n="exp3.role">市场营销实习生</h3>
+        <ul class="exp-bullets">
+          <li data-i18n="exp3.b1">翻译产品手册（30+专业术语），支撑海外客户与展会工作</li>
+          <li data-i18n="exp3.b2">调研3家国际品牌，整理数据并输出竞品分析报告</li>
+          <li data-i18n="exp3.b3">上海展会接待海外客户，完成商务对接</li>
+        </ul>
+        <div>
+          <span class="exp-tag">Translation</span>
+          <span class="exp-tag">Market Research</span>
+          <span class="exp-tag">B2B</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">2023.07 — 2023.09</div>
+        <div class="exp-company">Tory Burch</div>
+      </div>
+      <div class="exp-content">
+        <h3 class="exp-role" data-i18n="exp4.role">销售顾问实习生</h3>
+        <ul class="exp-bullets">
+          <li data-i18n="exp4.b1">运营小红书，3篇推荐内容累计8000+浏览、增粉200+</li>
+          <li data-i18n="exp4.b2">日均接待30余名顾客，维护并培育忠实客户</li>
+          <li data-i18n="exp4.b3">配合门店营销活动，客流量提升40%</li>
+        </ul>
+        <div>
+          <span class="exp-tag">小红书</span>
+          <span class="exp-tag">Retail</span>
+          <span class="exp-tag">Customer Relations</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-tag">03</span>
+    <h2 class="section-title" data-i18n="proj.title">项目经历</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <h3 class="project-title" data-i18n="proj1.title">新生入学服务优化项目</h3>
+      <p class="project-desc" data-i18n="proj1.desc">作为项目负责人，收集新生反馈，梳理报到流程痛点，精简报到环节，缩短排队时长。整理优化建议形成报告，为学院制度优化提供参考。</p>
+      <div class="project-tags">
+        <span class="ptag">Project Management</span>
+        <span class="ptag">Process Optimization</span>
+      </div>
+    </div>
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-num">02</div>
+      <h3 class="project-title" data-i18n="proj2.title">3项数据分析项目</h3>
+      <p class="project-desc" data-i18n="proj2.desc">完成3项商业数据分析课程项目，涵盖数据清洗、统计分析与可视化。运用Python与MySQL处理结构化数据，输出可落地的业务洞察。</p>
+      <div class="project-tags">
+        <span class="ptag">Python</span>
+        <span class="ptag">MySQL</span>
+        <span class="ptag">Data Viz</span>
+      </div>
+    </div>
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-num">03</div>
+      <h3 class="project-title" data-i18n="proj3.title">营销短视频制作</h3>
+      <p class="project-desc" data-i18n="proj3.desc">独立制作2支营销短视频，单支播放量突破5000+。从策划、脚本、拍摄到剪辑全流程独立完成，运用剪映与PR进行后期处理。</p>
+      <div class="project-tags">
+        <span class="ptag">Video Production</span>
+        <span class="ptag">Premiere Pro</span>
+        <span class="ptag">Marketing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-tag">04</span>
+    <h2 class="section-title" data-i18n="edu.title">教育背景</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <h3 class="edu-school" data-i18n="edu.school">北京信息科技大学</h3>
+      <p class="edu-degree" data-i18n="edu.degree">翻译（主修）/ 管理（辅修）</p>
+      <p class="edu-period">2023.09 — 2027.06 · <span data-i18n="edu.status">本科在读</span></p>
+      <div class="edu-courses">
+        <p class="edu-courses-title" data-i18n="edu.courses">核心课程</p>
+        <div class="course-pills">
+          <span class="course-pill" data-i18n="course1">高级英语</span>
+          <span class="course-pill" data-i18n="course2">西班牙语</span>
+          <span class="course-pill">Python</span>
+          <span class="course-pill">MySQL</span>
+          <span class="course-pill" data-i18n="course5">商业数据分析</span>
+          <span class="course-pill" data-i18n="course6">短视频制作</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="edu-awards">
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div class="award-text">
+            <strong data-i18n="award.title">全国人才杯英语演讲比赛 · 校级二等奖</strong>
+            <span data-i18n="award.desc">全院排名前十，擅长跨文化主题演讲，具备优秀英文表达与逻辑思维能力</span>
+          </div>
+        </div>
+        <div class="award-item" style="border:none;">
+          <div class="award-icon">🎓</div>
+          <div class="award-text">
+            <strong data-i18n="award2.title">学院学生会 · 体育部部长</strong>
+            <span data-i18n="award2.desc">2023.09—2025.06 带领8人团队统筹全院体育赛事，优化线上报名流程</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-lead reveal">
+        <span data-i18n="contact.lead1">让我们</span><br>
+        <em data-i18n="contact.lead2">开始对话</em>
+      </h2>
+      <p class="contact-sub reveal reveal-delay-1" data-i18n="contact.sub">无论是咨询合作、实习机会还是一次简单的交流，我都很乐意听到你的声音。</p>
+    </div>
+    <div>
+      <div class="contact-list">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">📱</div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.phone">电话</div>
+            <div class="contact-item-value">18514252617</div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-1">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.email">邮箱</div>
+            <div class="contact-item-value"><a href="mailto:srldeyouxiang@163.com">srldeyouxiang@163.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-2">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label" data-i18n="contact.location">所在地</div>
+            <div class="contact-item-value" data-i18n="contact.city">北京，中国</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 邵瑞麟 Steven Shao</span>
+  <span data-i18n="footer.made">Designed with intention · Beijing</span>
+</footer>
+
+<script>
+// ─── i18n DATA ───
+const i18n = {
+  zh: {
+    'nav.about': '关于我',
+    'nav.exp': '经历',
+    'nav.projects': '项目',
+    'nav.edu': '教育',
+    'nav.contact': '联系',
+    'hero.eyebrow': '数字咨询 · 翻译管理 · 内容创作',
+    'hero.desc': '北京信息科技大学翻译与管理双修在读生。具备德勤数字咨询、AI产品、市场营销实习经历，融汇多语言能力与数据分析思维，致力于数字咨询领域。',
+    'hero.cta1': '查看经历',
+    'hero.cta2': '联系我',
+    'hero.stat2': '实习经历',
+    'hero.stat3': '语言能力',
+    'hero.scroll': 'SCROLL',
+    'about.title': '关于我',
+    'about.lead': '翻译+管理复合背景，多语言能力与数字思维的交汇点。',
+    'about.body': '21岁，就读于北京信息科技大学，主修翻译，辅修管理。托福105分，具备流利商务英语和西班牙语基础交流能力。在德勤数字咨询、AI创业公司和知名消费品牌积累了丰富实习经历，擅长数据分析、项目协调与跨文化沟通，致力于在数字咨询领域持续深耕。',
+    'skill1.title': '语言能力',
+    'skill1.body': '中文（母语）· 英语（托福105）· 西班牙语（基础交流）',
+    'skill2.title': '数据分析',
+    'skill2.body': 'Python · MySQL · Excel · 商业数据可视化',
+    'skill3.title': '数字咨询',
+    'skill3.body': '业务流程梳理 · 数字化转型 · 方案撰写',
+    'skill4.title': '内容创作',
+    'skill4.body': '剪映 · PR · 小红书运营 · SEO优化',
+    'exp.title': '实习经历',
+    'exp1.role': 'Digital Consulting 实习生',
+    'exp1.b1': '参与企业数字化转型咨询，梳理业务流程，调研行业方案并输出简报',
+    'exp1.b2': '使用Excel、Python处理业务数据，完成清洗、统计与可视化分析',
+    'exp1.b3': '协助搭建解决方案框架，编写中英文咨询文档与演示文稿',
+    'exp1.b4': '对接客户与内部团队，同步进度，跟进方案迭代落地',
+    'exp2.role': '创意内容实习生',
+    'exp2.b1': '负责海外社媒账号运营与内容创作，提升曝光与互动',
+    'exp2.b2': '开展官网SEO优化，布局关键词，提升自然搜索流量',
+    'exp2.b3': '参与AI产品功能测试，记录并反馈问题，优化使用体验',
+    'exp2.b4': '协助产品岗位，梳理需求，对接技术与运营团队',
+    'exp3.role': '市场营销实习生',
+    'exp3.b1': '翻译产品手册（30+专业术语），支撑海外客户与展会工作',
+    'exp3.b2': '调研3家国际品牌，整理数据并输出竞品分析报告',
+    'exp3.b3': '上海展会接待海外客户，完成商务对接',
+    'exp4.role': '销售顾问实习生',
+    'exp4.b1': '运营小红书，3篇推荐内容累计8000+浏览、增粉200+',
+    'exp4.b2': '日均接待30余名顾客，维护并培育忠实客户',
+    'exp4.b3': '配合门店营销活动，客流量提升40%',
+    'proj.title': '项目经历',
+    'proj1.title': '新生入学服务优化项目',
+    'proj1.desc': '作为项目负责人，收集新生反馈，梳理报到流程痛点，精简报到环节，缩短排队时长。整理优化建议形成报告，为学院制度优化提供参考。',
+    'proj2.title': '3项数据分析项目',
+    'proj2.desc': '完成3项商业数据分析课程项目，涵盖数据清洗、统计分析与可视化。运用Python与MySQL处理结构化数据，输出可落地的业务洞察。',
+    'proj3.title': '营销短视频制作',
+    'proj3.desc': '独立制作2支营销短视频，单支播放量突破5000+。从策划、脚本、拍摄到剪辑全流程独立完成，运用剪映与PR进行后期处理。',
+    'edu.title': '教育背景',
+    'edu.school': '北京信息科技大学',
+    'edu.degree': '翻译（主修）/ 管理（辅修）',
+    'edu.status': '本科在读',
+    'edu.courses': '核心课程',
+    'course1': '高级英语',
+    'course2': '西班牙语',
+    'course5': '商业数据分析',
+    'course6': '短视频制作',
+    'award.title': '全国人才杯英语演讲比赛 · 校级二等奖',
+    'award.desc': '全院排名前十，擅长跨文化主题演讲，具备优秀英文表达与逻辑思维能力',
+    'award2.title': '学院学生会 · 体育部部长',
+    'award2.desc': '2023.09—2025.06 带领8人团队统筹全院体育赛事，优化线上报名流程',
+    'contact.lead1': '让我们',
+    'contact.lead2': '开始对话',
+    'contact.sub': '无论是咨询合作、实习机会还是一次简单的交流，我都很乐意听到你的声音。',
+    'contact.phone': '电话',
+    'contact.email': '邮箱',
+    'contact.location': '所在地',
+    'contact.city': '北京，中国',
+    'footer.made': 'Designed with intention · Beijing',
+  },
+  en: {
+    'nav.about': 'About',
+    'nav.exp': 'Experience',
+    'nav.projects': 'Projects',
+    'nav.edu': 'Education',
+    'nav.contact': 'Contact',
+    'hero.eyebrow': 'Digital Consulting · Translation · Content Creation',
+    'hero.desc': 'Undergraduate student at BISTU majoring in Translation with a minor in Management. Deloitte digital consulting intern, AI startup & marketing experience. Bridging multilingual fluency with data-driven thinking.',
+    'hero.cta1': 'View Experience',
+    'hero.cta2': 'Get in Touch',
+    'hero.stat2': 'Internships',
+    'hero.stat3': 'Languages',
+    'hero.scroll': 'SCROLL',
+    'about.title': 'About Me',
+    'about.lead': 'A Translation & Management dual background — where multilingual fluency meets digital thinking.',
+    'about.body': '21 years old, studying at Beijing Information Science and Technology University. TOEFL 105, fluent business English, conversational Spanish. Internship experience at Deloitte Digital Consulting, AI startup Cookiy, and global brands. Skilled in data analysis, project coordination, and cross-cultural communication.',
+    'skill1.title': 'Languages',
+    'skill1.body': 'Mandarin (native) · English (TOEFL 105) · Spanish (conversational)',
+    'skill2.title': 'Data Analysis',
+    'skill2.body': 'Python · MySQL · Excel · Business Data Visualization',
+    'skill3.title': 'Digital Consulting',
+    'skill3.body': 'Process Mapping · Digital Transformation · Consulting Decks',
+    'skill4.title': 'Content Creation',
+    'skill4.body': 'CapCut · Premiere Pro · Social Media · SEO',
+    'exp.title': 'Experience',
+    'exp1.role': 'Digital Consulting Intern',
+    'exp1.b1': 'Participated in enterprise digital transformation consulting, mapping business processes and producing industry briefings',
+    'exp1.b2': 'Processed business data using Excel and Python — cleaning, statistical analysis, and visualization',
+    'exp1.b3': 'Assisted in building solution frameworks; drafted bilingual consulting documents and presentations',
+    'exp1.b4': 'Coordinated between clients and internal teams, tracking progress and iterating on deliverables',
+    'exp2.role': 'Creative Content Intern',
+    'exp2.b1': 'Managed overseas social media accounts and content creation, growing reach and engagement',
+    'exp2.b2': 'Conducted SEO optimization for the company website, increasing organic traffic through keyword strategy',
+    'exp2.b3': 'Participated in AI product testing, logging and reporting issues to improve user experience',
+    'exp2.b4': 'Supported the product team by clarifying requirements and liaising with tech and operations',
+    'exp3.role': 'Marketing Intern',
+    'exp3.b1': 'Translated product manuals (30+ technical terms) for overseas clients and trade show support',
+    'exp3.b2': 'Researched 3 international brands and produced competitive analysis reports',
+    'exp3.b3': 'Hosted overseas clients at Shanghai trade show, managing business meetings',
+    'exp4.role': 'Sales Consultant Intern',
+    'exp4.b1': 'Managed Xiaohongshu account — 3 posts reached 8,000+ views and gained 200+ followers',
+    'exp4.b2': 'Assisted 30+ customers daily, maintaining and nurturing loyal client relationships',
+    'exp4.b3': 'Supported in-store marketing campaigns, contributing to a 40% increase in foot traffic',
+    'proj.title': 'Projects',
+    'proj1.title': 'Freshman Enrollment Experience Optimization',
+    'proj1.desc': 'Led a service improvement project as project lead. Gathered freshman feedback, mapped pain points in the registration process, simplified check-in procedures, and reduced wait times. Compiled findings into a report for institutional improvement.',
+    'proj2.title': '3 Data Analysis Projects',
+    'proj2.desc': 'Completed 3 business data analysis projects covering data cleaning, statistical analysis, and visualization. Used Python and MySQL to process structured data and generate actionable business insights.',
+    'proj3.title': 'Marketing Short Video Production',
+    'proj3.desc': 'Independently produced 2 marketing short videos, each surpassing 5,000+ views. Managed full production pipeline from concept and scripting to shooting and editing using CapCut and Premiere Pro.',
+    'edu.title': 'Education',
+    'edu.school': 'Beijing Information Science and Technology University',
+    'edu.degree': 'Translation (Major) / Management (Minor)',
+    'edu.status': 'Undergraduate, in progress',
+    'edu.courses': 'Key Courses',
+    'course1': 'Advanced English',
+    'course2': 'Spanish',
+    'course5': 'Business Data Analytics',
+    'course6': 'Short Video Production',
+    'award.title': 'National Talent Cup English Speaking · Campus 2nd Place',
+    'award.desc': 'Top 10 university-wide. Strong cross-cultural presentation skills and logical English communication',
+    'award2.title': 'Student Union · Director of Sports Department',
+    'award2.desc': '2023.09—2025.06 Led a team of 8 to coordinate campus sports events and streamline online registration',
+    'contact.lead1': "Let's",
+    'contact.lead2': 'Start a Conversation',
+    'contact.sub': "Whether it's a consulting collaboration, internship opportunity, or just a simple hello — I'd love to hear from you.",
+    'contact.phone': 'Phone',
+    'contact.email': 'Email',
+    'contact.location': 'Location',
+    'contact.city': 'Beijing, China',
+    'footer.made': 'Designed with intention · Beijing',
+  },
+  es: {
+    'nav.about': 'Sobre mí',
+    'nav.exp': 'Experiencia',
+    'nav.projects': 'Proyectos',
+    'nav.edu': 'Educación',
+    'nav.contact': 'Contacto',
+    'hero.eyebrow': 'Consultoría Digital · Traducción · Creación de Contenido',
+    'hero.desc': 'Estudiante de Traducción y Gestión en BISTU. Pasante en consultoría digital de Deloitte, startup de IA y marketing. Fluido en tres idiomas, con enfoque en análisis de datos y transformación digital.',
+    'hero.cta1': 'Ver Experiencia',
+    'hero.cta2': 'Contactar',
+    'hero.stat2': 'Prácticas',
+    'hero.stat3': 'Idiomas',
+    'hero.scroll': 'BAJAR',
+    'about.title': 'Sobre Mí',
+    'about.lead': 'Traducción + Gestión — donde la fluidez multilingüe se encuentra con el pensamiento digital.',
+    'about.body': '21 años, estudiando en la Universidad de Ciencias e Ingeniería de la Información de Beijing. TOEFL 105, inglés de negocios fluido, español conversacional. Experiencia en prácticas en Deloitte Digital Consulting, startup de IA Cookiy y marcas globales. Habilidades en análisis de datos, coordinación de proyectos y comunicación intercultural.',
+    'skill1.title': 'Idiomas',
+    'skill1.body': 'Chino (nativo) · Inglés (TOEFL 105) · Español (conversacional)',
+    'skill2.title': 'Análisis de Datos',
+    'skill2.body': 'Python · MySQL · Excel · Visualización de Datos',
+    'skill3.title': 'Consultoría Digital',
+    'skill3.body': 'Mapeo de Procesos · Transformación Digital · Propuestas',
+    'skill4.title': 'Creación de Contenido',
+    'skill4.body': 'CapCut · Premiere Pro · Redes Sociales · SEO',
+    'exp.title': 'Experiencia',
+    'exp1.role': 'Prácticas en Consultoría Digital',
+    'exp1.b1': 'Participé en consultoría de transformación digital, mapeando procesos de negocio y produciendo informes del sector',
+    'exp1.b2': 'Procesé datos de negocio con Excel y Python — limpieza, análisis estadístico y visualización',
+    'exp1.b3': 'Ayudé a construir marcos de soluciones; redacté documentos y presentaciones bilingües',
+    'exp1.b4': 'Coordiné entre clientes y equipos internos, haciendo seguimiento del progreso',
+    'exp2.role': 'Prácticas de Contenido Creativo',
+    'exp2.b1': 'Gestioné cuentas de redes sociales internacionales y creación de contenido para aumentar el alcance',
+    'exp2.b2': 'Realicé optimización SEO del sitio web oficial, mejorando el tráfico orgánico',
+    'exp2.b3': 'Participé en pruebas de productos de IA, registrando y reportando problemas',
+    'exp2.b4': 'Apoyé al equipo de producto en la clarificación de requisitos y enlace con tecnología',
+    'exp3.role': 'Prácticas en Marketing',
+    'exp3.b1': 'Traduje manuales de productos (30+ términos técnicos) para clientes internacionales y ferias',
+    'exp3.b2': 'Investigué 3 marcas internacionales y produje informes de análisis competitivo',
+    'exp3.b3': 'Atendí clientes internacionales en feria comercial de Shanghái',
+    'exp4.role': 'Prácticas como Asesora de Ventas',
+    'exp4.b1': 'Gestioné cuenta de Xiaohongshu — 3 publicaciones alcanzaron 8,000+ visitas y 200+ seguidores',
+    'exp4.b2': 'Atendí 30+ clientes diariamente, manteniendo relaciones de fidelización',
+    'exp4.b3': 'Apoyé campañas de marketing de la tienda, contribuyendo a un aumento del 40% en afluencia',
+    'proj.title': 'Proyectos',
+    'proj1.title': 'Optimización del Proceso de Admisión de Nuevos Estudiantes',
+    'proj1.desc': 'Lideré un proyecto de mejora de servicios como responsable del proyecto. Recopilé comentarios de nuevos estudiantes, mapeé puntos de dolor en el proceso de registro y simplifiqué los procedimientos de entrada.',
+    'proj2.title': '3 Proyectos de Análisis de Datos',
+    'proj2.desc': 'Completé 3 proyectos de análisis de datos empresariales que incluyen limpieza, análisis estadístico y visualización. Usé Python y MySQL para procesar datos estructurados y generar perspectivas de negocio.',
+    'proj3.title': 'Producción de Videos de Marketing',
+    'proj3.desc': 'Produje de forma independiente 2 videos de marketing cortos, cada uno superando 5,000+ visualizaciones. Gestioné todo el proceso de producción desde el guion hasta la edición final.',
+    'edu.title': 'Educación',
+    'edu.school': 'Universidad de Ciencias e Ingeniería de la Información de Beijing',
+    'edu.degree': 'Traducción (Mayor) / Gestión (Menor)',
+    'edu.status': 'Grado en curso',
+    'edu.courses': 'Asignaturas Principales',
+    'course1': 'Inglés Avanzado',
+    'course2': 'Español',
+    'course5': 'Análisis de Datos Empresariales',
+    'course6': 'Producción de Video',
+    'award.title': 'Concurso Nacional de Oratoria en Inglés · 2.º Premio Universitario',
+    'award.desc': 'Top 10 universitario. Habilidades sólidas de presentación intercultural y comunicación lógica en inglés',
+    'award2.title': 'Consejo Estudiantil · Director del Departamento de Deportes',
+    'award2.desc': '2023.09—2025.06 Lideré un equipo de 8 personas para coordinar eventos deportivos universitarios',
+    'contact.lead1': 'Iniciemos',
+    'contact.lead2': 'una Conversación',
+    'contact.sub': 'Ya sea una colaboración de consultoría, una oportunidad de prácticas o simplemente un saludo — me encantaría escucharte.',
+    'contact.phone': 'Teléfono',
+    'contact.email': 'Correo',
+    'contact.location': 'Ubicación',
+    'contact.city': 'Pekín, China',
+    'footer.made': 'Diseñado con intención · Pekín',
+  }
+};
+
+let currentLang = 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'zh' ? 'zh' : lang === 'es' ? 'es' : 'en';
+
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === (lang === 'zh' ? '中' : lang));
+  });
+
+  // Update all text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) {
+      el.textContent = i18n[lang][key];
+    }
+  });
+}
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── HAMBURGER ───
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+});
+
+// ─── REVEAL ON SCROLL ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
