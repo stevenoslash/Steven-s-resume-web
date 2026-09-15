@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Shao 邵瑞林 — AI × 产品 × 数据 × 技术</title>
+<meta name="description" content="邵瑞林 Steven Shao — 加州大学欧文分校软件工程大四学生。以工程为基础，专注于产品、数据与AI。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Noto+Sans+SC:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{ font-family: "Noto Sans SC", var(--font-body); }
+  .hero__kicker, .timeline__when, .card__when, .edu__when, .skills__group h3, .tag, .contact__loc{ font-family: "Noto Sans SC", var(--font-mono); }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header" id="top">
+  <nav class="nav container">
+    <a href="#top" class="nav__mark">邵瑞林 Steven Shao</a>
+    <button class="nav__toggle" id="navToggle" aria-label="切换导航" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#top" data-nav="top">首页</a></li>
+      <li><a href="#about" data-nav="about">关于</a></li>
+      <li><a href="#experience" data-nav="experience">经历</a></li>
+      <li><a href="#projects" data-nav="projects">项目</a></li>
+      <li><a href="#education" data-nav="education">教育背景</a></li>
+      <li><a href="#skills" data-nav="skills">技能</a></li>
+      <li><a href="#contact" data-nav="contact">联系</a></li>
+      <li><a href="Steven_Shao_Resume.pdf" class="nav__resume" target="_blank" rel="noopener">简历</a></li>
+      <li class="lang-switch">
+        <a href="index.html" class="lang-switch__item">EN</a>
+        <a href="zh.html" class="lang-switch__item is-active">中</a>
+        <a href="es.html" class="lang-switch__item">ES</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero container" id="hero">
+    <div class="hero__text">
+      <p class="hero__kicker">AI <span>×</span> 产品 <span>×</span> 数据 <span>×</span> 技术</p>
+      <h1 class="hero__name">邵瑞林 · Steven Shao</h1>
+      <p class="hero__lede">
+        加州大学欧文分校（UC Irvine）软件工程专业大四学生，拥有德勤、字节跳动相关咨询项目以及AI产品的实习经历。
+        我擅长将数据分析、产品思维与跨部门执行结合起来，把用户需求与业务数据转化为可落地的决策。
+      </p>
+      <div class="hero__actions">
+        <a href="Steven_Shao_Resume.pdf" class="btn btn--primary" target="_blank" rel="noopener">简历</a>
+        <a href="#experience" class="btn btn--ghost">查看经历</a>
+        <a href="#projects" class="btn btn--ghost">项目</a>
+        <a href="#contact" class="btn btn--ghost">联系我</a>
+      </div>
+    </div>
+    <div class="hero__mark" aria-hidden="true">
+      <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="var(--ink)" stroke-width="1.1" opacity="0.55">
+          <line x1="60" y1="70" x2="200" y2="150"/>
+          <line x1="200" y1="150" x2="340" y2="90"/>
+          <line x1="200" y1="150" x2="150" y2="280"/>
+          <line x1="200" y1="150" x2="300" y2="300"/>
+          <line x1="150" y1="280" x2="80" y2="350"/>
+          <line x1="300" y1="300" x2="360" y2="230"/>
+          <line x1="60" y1="70" x2="150" y2="280"/>
+          <line x1="340" y1="90" x2="360" y2="230"/>
+        </g>
+        <g fill="var(--accent)">
+          <circle cx="60" cy="70" r="5"/>
+          <circle cx="200" cy="150" r="8"/>
+          <circle cx="340" cy="90" r="4.5"/>
+          <circle cx="150" cy="280" r="6"/>
+          <circle cx="300" cy="300" r="5"/>
+          <circle cx="80" cy="350" r="4"/>
+          <circle cx="360" cy="230" r="4.5"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section container" id="about">
+    <div class="section__head"><h2>关于我</h2></div>
+    <div class="about__body">
+      <p>我是加州大学欧文分校软件工程专业的大四学生，拥有翻译与管理的复合背景。</p>
+      <p>我的经历涵盖德勤的数字咨询工作、与字节跳动相关的数据与策略项目、AI产品测试与用户研究、国际市场营销，以及客户服务岗位。</p>
+      <p>我喜欢在技术、数据、产品与商业交汇的地方工作——尤其是那些既需要分析思维、又需要理解用户的问题。目前我正在寻找产品经理、AI产品、产品战略、产品分析、商业分析以及科技咨询方向的机会。</p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section container" id="experience">
+    <div class="section__head"><h2>实习经历</h2></div>
+    <ol class="timeline">
+      <li class="timeline__item">
+        <div class="timeline__when">2026.06 — 2026.08</div>
+        <div class="timeline__body">
+          <h3>数字咨询实习生 <span>· 德勤（Deloitte）</span></h3>
+          <p class="timeline__sub">字节跳动与墨迹天气的客户项目</p>
+          <ul>
+            <li>基于原始数据表搭建SQL数据视图，运用地区、节点与时间维度的筛选逻辑，支持结构化的业务分析。</li>
+            <li>开发自动化SQL工作流与任务脚本，简化重复性的数据处理与报表工作。</li>
+            <li>分析项目表现并将数据洞察转化为战略建议，部分建议已被客户采纳。</li>
+            <li>通过数据清洗、Python源代码修复与交互式数据可视化支持数字化转型工作；统筹实习生团队的任务分工、里程碑与跨部门交付。</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__when">2025.11 — 2026.03</div>
+        <div class="timeline__body">
+          <h3>创意内容实习生 <span>· Cookiy AI</span></h3>
+          <p class="timeline__sub">AI语音与智能体用户研究产品</p>
+          <ul>
+            <li>通过功能测试、记录Bug与UX问题、整理用户需求，并与技术和运营团队协同反馈，支持产品迭代。</li>
+            <li>负责海外社交媒体内容运营，并通过关键词策略与持续的内容优化支持官网SEO，提升用户互动与自然流量。</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__when">2024.06 — 2024.09</div>
+        <div class="timeline__body">
+          <h3>市场营销实习生 <span>· 北京长峰金鼎科技有限公司</span></h3>
+          <ul>
+            <li>对3家全球行业公司进行竞品分析，并输出正式研究报告以支持业务与市场决策。</li>
+            <li>通过双语产品资料、跨文化沟通与现场协调，支持国际客户沟通与展会工作。</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__when">2023.07 — 2023.09</div>
+        <div class="timeline__body">
+          <h3>销售顾问实习生 <span>· Tory Burch</span></h3>
+          <ul>
+            <li>日均接待30余名顾客，并与8位高价值复购客户建立长期关系。</li>
+            <li>运营品牌小红书账号，3篇精选内容累计获得8000+浏览与200+新增粉丝。</li>
+            <li>配合门店营销活动，助力门店客流量提升40%。</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section container" id="projects">
+    <div class="section__head"><h2>领导力与项目</h2></div>
+    <div class="cards">
+      <article class="card">
+        <div class="card__when">2023.09 — 2025.06</div>
+        <h3>体育部部长 <span>· 学生会</span></h3>
+        <ul>
+          <li>组织500人以上规模的大型体育赛事；优化线上报名系统，将错误率从15%降至3%，获评最佳创意奖。</li>
+          <li>收集180余名用户反馈，改进活动设计，参与率提升28%，满意度达92/100分。</li>
+          <li>带领8人团队，部门获评"优秀学生组织"。</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card__when">2024.08 — 2024.09</div>
+        <h3>项目负责人 <span>· 新生入学优化项目</span></h3>
+        <ul>
+          <li>调研300余名新生，识别出报到流程中的8个核心痛点。</li>
+          <li>重新设计报到流程，将平均等待时间从120分钟缩短至60分钟，流程覆盖率达95%。</li>
+          <li>提交10项优化建议，全部被正式采纳为学院运营标准。</li>
+        </ul>
+      </article>
+      <article class="card card--soon">
+        <div class="card__when">筹备中</div>
+        <h3>UCI / 尔湾学生资源平台</h3>
+        <p>一个整合UCI与尔湾（Irvine）实用资源的学生服务平台，目前处于早期规划阶段。</p>
+        <span class="tag">即将推出</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section container" id="education">
+    <div class="section__head"><h2>教育背景</h2></div>
+    <div class="edu">
+      <div class="edu__item">
+        <div class="edu__when">2026.09 — 2027.06</div>
+        <div class="edu__body">
+          <h3>加州大学欧文分校（UC Irvine）</h3>
+          <p>软件工程学士</p>
+          <span class="tag tag--current">在读</span>
+        </div>
+      </div>
+      <div class="edu__item">
+        <div class="edu__when">2023.09 — 2026.06</div>
+        <div class="edu__body">
+          <h3>北京信息科技大学</h3>
+          <p>翻译学学士，辅修管理学</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section container" id="skills">
+    <div class="section__head"><h2>技能</h2></div>
+    <div class="skills">
+      <div class="skills__group">
+        <h3>产品与分析</h3>
+        <ul class="pillrow">
+          <li>产品分析</li><li>商业分析</li><li>SQL</li><li>MySQL</li><li>数据可视化</li>
+          <li>Excel（数据透视表）</li><li>竞品分析</li><li>用户研究</li><li>UX测试</li><li>SEO</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>技术</h3>
+        <ul class="pillrow"><li>Python</li></ul>
+      </div>
+      <div class="skills__group">
+        <h3>语言能力</h3>
+        <ul class="pillrow">
+          <li>中文 — 母语</li>
+          <li>英语 — 专业工作水平</li>
+          <li>西班牙语 — 基础日常交流</li>
+        </ul>
+      </div>
+    </div>
+    <div class="award">
+      <h3>全国人才杯英语演讲比赛</h3>
+      <p>校级二等奖，2024年9月 — 全院排名前十</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section container" id="contact">
+    <div class="section__head"><h2>联系方式</h2></div>
+    <div class="contact">
+      <p class="contact__lede">
+        我正在积极寻找产品经理、AI产品与数据分析方向的工作机会，同时也在申请研究生项目。如果这些方向与你正在做的事情相关，欢迎与我联系。
+      </p>
+      <div class="contact__details">
+        <a href="mailto:stevenoslash@gmail.com" class="contact__link">stevenoslash@gmail.com</a>
+        <span class="contact__loc">加州尔湾（Irvine, CA）</span>
+      </div>
+      <a href="Steven_Shao_Resume.pdf" class="btn btn--primary" target="_blank" rel="noopener">下载简历</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer container">
+  <span>© 2026 邵瑞林 Steven Shao</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
